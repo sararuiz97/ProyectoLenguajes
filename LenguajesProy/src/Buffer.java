@@ -45,7 +45,9 @@ public class Buffer {
         String[] op = (String[])this.bufferOp.remove();
         System.out.println("Consuming " + op.toString());
         // update progressbar
-        this.gui.updateProgressBar(this.bufferOp.size());
+        // when there is only 1 producer the row will be removed so fast that there will be no rows printed on the to-do table
+        this.gui.removeRowToDo();
+        this.gui.updateProgressBar((this.bufferOp.size()/this.buffSize)*100);
         notifyAll();
         
         return op;

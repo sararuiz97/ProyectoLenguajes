@@ -354,6 +354,11 @@ public class GUI extends javax.swing.JFrame {
         dtm.addRow(new Object[] {""+op[3] +"", idConsumer, "" + op[0] + " " + op[1] + " " + op[2], result} );
         this.jsTareasRealizadas.setValue(this.consumedOperationsCount);
     }
+    
+    public synchronized void removeRowToDo(){
+        DefaultTableModel dtm = (DefaultTableModel) this.jTableHacer.getModel();
+        dtm.removeRow(0);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;

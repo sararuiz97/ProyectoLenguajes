@@ -41,6 +41,7 @@ public class Consumer extends Thread{
             System.out.println("Consumed op result " + value);
             //update table consumed
             this.gui.addRowDone(this.id, op, value);
+            
             try {
                 Thread.sleep(this.sleepTime);
             } catch (InterruptedException ex) {
