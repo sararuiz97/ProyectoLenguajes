@@ -1,4 +1,5 @@
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -48,14 +49,10 @@ public class GUI extends javax.swing.JFrame {
         jlConsumer = new javax.swing.JLabel();
         jsProducer = new javax.swing.JSpinner();
         jsConsumer = new javax.swing.JSpinner();
-        jtfRangoMin = new javax.swing.JTextField();
         jlBuffer = new javax.swing.JLabel();
         jlRango = new javax.swing.JLabel();
-        jtBuffer = new javax.swing.JTextField();
         jlCantidad = new javax.swing.JLabel();
         jlTiempo = new javax.swing.JLabel();
-        jtProducerTime = new javax.swing.JTextField();
-        jtConsumerTime = new javax.swing.JTextField();
         jbInicio = new javax.swing.JButton();
         jlTareasHacer = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -65,7 +62,13 @@ public class GUI extends javax.swing.JFrame {
         jlTareasRealizar = new javax.swing.JLabel();
         jpProgresoBuffer = new javax.swing.JProgressBar();
         jsTareasRealizadas = new javax.swing.JSpinner();
-        jtfRangoMax = new javax.swing.JTextField();
+        jsBuffer = new javax.swing.JSpinner();
+        jsProducerTime = new javax.swing.JSpinner();
+        jsConsumerTime = new javax.swing.JSpinner();
+        jsMin = new javax.swing.JSpinner();
+        jsMax = new javax.swing.JSpinner();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,12 +89,9 @@ public class GUI extends javax.swing.JFrame {
 
         jlConsumer.setText("Consumidores");
 
-        jtfRangoMin.setText("min");
-        jtfRangoMin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfRangoMinActionPerformed(evt);
-            }
-        });
+        jsProducer.setModel(new javax.swing.SpinnerNumberModel(0, 0, 1000, 1));
+
+        jsConsumer.setModel(new javax.swing.SpinnerNumberModel(0, 0, 1000, 1));
 
         jlBuffer.setText("Tamaño del Buffer");
 
@@ -112,10 +112,13 @@ public class GUI extends javax.swing.JFrame {
 
         jTableHacer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Produced By", "Operation"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         jTableHacer.setEnabled(false);
@@ -123,115 +126,143 @@ public class GUI extends javax.swing.JFrame {
 
         jTableRealizar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Produced by", "Consumed by", "Opeation", "Result"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         jScrollPane3.setViewportView(jTableRealizar);
 
         jlTareasRealizar.setText("Tareas Realizadas");
 
-        jtfRangoMax.setText("max");
-        jtfRangoMax.setToolTipText("");
+        jsTareasRealizadas.setEnabled(false);
+
+        jsBuffer.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999999999, 1));
+
+        jsProducerTime.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10000, 1));
+
+        jsConsumerTime.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10000, 1));
+
+        jsMin.setModel(new javax.swing.SpinnerNumberModel(0, 0, 999999999, 1));
+
+        jsMax.setModel(new javax.swing.SpinnerNumberModel(1, 1, 999999999, 1));
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(3);
+        jTextArea1.setText("Note: Only use integers as input. \nMax range are already defined.");
+        jScrollPane4.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jlCantidad)
-                        .addGap(63, 63, 63)
-                        .addComponent(jlTiempo))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlProducer)
                             .addComponent(jlConsumer)
                             .addComponent(jlBuffer)
                             .addComponent(jlRango))
                         .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtBuffer)
-                            .addComponent(jtfRangoMin)
-                            .addComponent(jsConsumer)
-                            .addComponent(jsProducer, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtProducerTime, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                                    .addComponent(jtConsumerTime)))
+                                .addComponent(jbInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtfRangoMax, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(58, 58, 58))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jbInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jpProgresoBuffer, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jlTareasHacer))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                    .addComponent(jlTareasRealizar)
-                    .addComponent(jsTareasRealizadas))
-                .addGap(37, 37, 37))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jsMin, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jsMax, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jlCantidad)
+                                                .addComponent(jsConsumer, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jsBuffer, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jsConsumerTime, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                    .addGap(62, 62, 62)
+                                                    .addComponent(jlTiempo)
+                                                    .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jsProducer, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(62, 62, 62)
+                                            .addComponent(jsProducerTime, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(101, 101, 101))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jpProgresoBuffer, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jlTareasHacer))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                                .addComponent(jlTareasRealizar))
+                            .addComponent(jsTareasRealizadas, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(137, 137, 137))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlCantidad)
-                    .addComponent(jlTiempo))
-                .addGap(23, 23, 23)
+                    .addComponent(jlTiempo)
+                    .addComponent(jlCantidad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlProducer)
                     .addComponent(jsProducer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtProducerTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jsProducerTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlConsumer)
                     .addComponent(jsConsumer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtConsumerTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jsConsumerTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlBuffer)
-                    .addComponent(jtBuffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfRangoMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlRango)
-                    .addComponent(jtfRangoMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlBuffer)
+                            .addComponent(jsBuffer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlRango)
+                            .addComponent(jsMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jsMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)))
                 .addComponent(jbInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlTareasHacer)
-                    .addComponent(jlTareasRealizar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jsTareasRealizadas))
+                        .addComponent(jlTareasRealizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jpProgresoBuffer, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(77, 77, 77))
+                        .addComponent(jlTareasHacer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpProgresoBuffer, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jsTareasRealizadas))
+                .addGap(120, 120, 120))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -249,10 +280,6 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jtfRangoMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfRangoMinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfRangoMinActionPerformed
 
     private void jbInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInicioActionPerformed
         // TODO add your handling code here:
@@ -293,28 +320,50 @@ public class GUI extends javax.swing.JFrame {
             }
         });        
     }
+    
    
     private void initial() {
         
-        DefaultTableModel dtmToDo = new DefaultTableModel(0, 0);
+        ExtraTableModel dtmToDo = new ExtraTableModel(0, 0);
         String headers[] = new String[] { "Produced by", "Operation"};
         dtmToDo.setColumnIdentifiers(headers);
         this.jTableHacer.setModel(dtmToDo);
         
-        DefaultTableModel dtmDone = new DefaultTableModel(0, 0);
+        ExtraTableModel dtmDone = new ExtraTableModel(0, 0);
         String headersdone[] = new String[] { "Produced by", "Consumed by", "Operation", "Result"};
         dtmDone.setColumnIdentifiers(headersdone);
         this.jTableRealizar.setModel(dtmDone);
         
         
         //get values
-        this.bufferSize = Integer.parseInt(this.jtBuffer.getText());
-        this.consumerSleepTime = Integer.parseInt(this.jtConsumerTime.getText());
-        this.producerSleepTime = Integer.parseInt(this.jtProducerTime.getText());
-        this.consumersSize = (Integer) this.jsConsumer.getValue();
-        this.producersSize = (Integer) this.jsProducer.getValue();
-        this.max = Integer.parseInt(this.jtfRangoMax.getText());
-        this.min = Integer.parseInt(this.jtfRangoMin.getText());
+        try {
+            //this.bufferSize = Integer.parseInt(this.jtBuffer.getText());
+            this.bufferSize = (Integer)this.jsBuffer.getValue();
+            //this.consumerSleepTime = Integer.parseInt(this.jtConsumerTime.getText());
+            //this.producerSleepTime = Integer.parseInt(this.jtProducerTime.getText());
+            this.consumerSleepTime = (Integer) this.jsConsumerTime.getValue();
+            this.producerSleepTime = (Integer) this.jsProducerTime.getValue();
+            this.consumersSize = (Integer) this.jsConsumer.getValue();
+            this.producersSize = (Integer) this.jsProducer.getValue();
+            //this.max = Integer.parseInt(this.jtfRangoMax.getText());
+            //this.min = Integer.parseInt(this.jtfRangoMin.getText());
+            this.max = (Integer) this.jsMax.getValue();
+            this.min = (Integer) this.jsMin.getValue();
+            
+            System.out.println(this.bufferSize);
+            if(this.min > this.max) {
+                JOptionPane.showMessageDialog(null, "MIN IS GREATER THAN MAX, VALUES WERE EXCHANGED");
+                int val = 0;
+                val = this.max;
+                this.max = this.min;
+                this.min = val;
+                this.jsMax.setValue(this.max);
+                this.jsMin.setValue(this.min);
+            }
+            
+        } catch(NumberFormatException nfex){
+            JOptionPane.showMessageDialog(null, "ONLY INTEGERS AS IMPUT");
+        }
         
         System.out.println("Iniciando consumidores y productores");
         System.out.println("sleep times " + this.producerSleepTime + " " + this.consumerSleepTime);
@@ -344,20 +393,27 @@ public class GUI extends javax.swing.JFrame {
     }
     
     public synchronized void addRowToDo(String[] op){
-        DefaultTableModel dtm = (DefaultTableModel)this.jTableHacer.getModel();
-        dtm.addRow(new Object[] {""+op[3] +"", "" + op[0] + " " + op[1] + " " + op[2]} );
+        ExtraTableModel dtm = (ExtraTableModel)this.jTableHacer.getModel();
+        dtm.addRow(new Object[] {""+op[3] +"", "(" + op[0] + " " + op[1] + " " + op[2] +")"} );
     }
     
-    public synchronized void addRowDone(int idConsumer, String[] op, int result){
+    public synchronized void addRowDone(int idConsumer, String[] op, String result){
         this.consumedOperationsCount += 1;
-        DefaultTableModel dtm = (DefaultTableModel)this.jTableRealizar.getModel();
-        dtm.addRow(new Object[] {""+op[3] +"", idConsumer, "" + op[0] + " " + op[1] + " " + op[2], result} );
+        ExtraTableModel dtm = (ExtraTableModel)this.jTableRealizar.getModel();
+        dtm.addRow(new Object[] {""+op[3] +"", idConsumer, "(" + op[0] + " " + op[1] + " " + op[2] + ")", result} );
         this.jsTareasRealizadas.setValue(this.consumedOperationsCount);
     }
     
     public synchronized void removeRowToDo(){
-        DefaultTableModel dtm = (DefaultTableModel) this.jTableHacer.getModel();
-        dtm.removeRow(0);
+        try {
+            ExtraTableModel dtm = (ExtraTableModel) this.jTableHacer.getModel();
+            if (dtm.getRowCount() > 0) {
+                dtm.removeRow(0);
+            }
+            
+        } catch(ArrayIndexOutOfBoundsException ex) {
+            System.out.println(ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -365,9 +421,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTableHacer;
     private javax.swing.JTable jTableRealizar;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton jbInicio;
     private javax.swing.JLabel jlBuffer;
     private javax.swing.JLabel jlCantidad;
@@ -378,13 +436,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jlTareasRealizar;
     private javax.swing.JLabel jlTiempo;
     private javax.swing.JProgressBar jpProgresoBuffer;
+    private javax.swing.JSpinner jsBuffer;
     private javax.swing.JSpinner jsConsumer;
+    private javax.swing.JSpinner jsConsumerTime;
+    private javax.swing.JSpinner jsMax;
+    private javax.swing.JSpinner jsMin;
     private javax.swing.JSpinner jsProducer;
+    private javax.swing.JSpinner jsProducerTime;
     private javax.swing.JSpinner jsTareasRealizadas;
-    private javax.swing.JTextField jtBuffer;
-    private javax.swing.JTextField jtConsumerTime;
-    private javax.swing.JTextField jtProducerTime;
-    private javax.swing.JTextField jtfRangoMax;
-    private javax.swing.JTextField jtfRangoMin;
     // End of variables declaration//GEN-END:variables
 }

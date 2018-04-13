@@ -37,7 +37,7 @@ public class Consumer extends Thread{
             
             //get operation from buffer consume()
             String[] op = this.buffer.consume();
-            int value = this.evaluate(op);
+            String value = this.evaluate(op);
             System.out.println("Consumed op result " + value);
             //update table consumed
             this.gui.addRowDone(this.id, op, value);
@@ -50,23 +50,32 @@ public class Consumer extends Thread{
         }
     }
     
-    public int evaluate(String[] op) {
+    public String evaluate(String[] op) {
         
         String operation = op[0];
         int a = Integer.parseInt(op[1]);
         int b = Integer.parseInt(op[2]);
         int value = 0;
+        String str = "";
         
         System.out.println("evaluating values "+ operation + " " + a + " " + b);
         if(operation.equals("+")){
             value = a + b;
+            str = ""+value;
         } else if(operation.equals("-")){
             value = a - b;
+            str = ""+value;
         } else if(operation.equals("*")){
             value = a * b;
+            str = ""+value;
         } else if(operation.equals("/")){
+            if(b == 0) {
+                str = "error";
+                return str;
+            }
             value = a / b;
+            str = ""+value;
         }
-        return value;
+        return str;
     }
 }
